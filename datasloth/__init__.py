@@ -123,7 +123,7 @@ SQL query for SQLite:
             return
         prompt += DataSloth.prompt_format.format(QUERY=query)
         response = openai.Completion.create(
-            model="text-davinci-002",
+            model="gpt-3.5-turbo-instruct"", # as per OpenAI deprecations guide: https://platform.openai.com/docs/deprecations/instructgpt-models
             prompt=prompt,
             temperature=0,
             max_tokens=1000,
@@ -155,7 +155,7 @@ SQL query for SQLite:
             prompt += f"|{'|'.join(columns)}|\n"
             prompt += f"|{'|'.join(['-'*len(col) for col in columns])}|\n|"
             response = openai.Completion.create(
-                model="text-davinci-002",
+                model="gpt-3.5-turbo-instruct", # as per OpenAI deprecations guide: https://platform.openai.com/docs/deprecations/instructgpt-models
                 prompt=prompt,
                 temperature=0.8,
                 max_tokens=1000,
